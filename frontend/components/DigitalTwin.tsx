@@ -239,6 +239,15 @@ export default function DigitalTwin({ demoActive }: { demoActive?: boolean }) {
 
       {/* Simulator Graph & Metrics Panel */}
       <div className="xl:col-span-2 flex flex-col h-[320px] xl:h-auto justify-between space-y-4">
+        {error && (
+          <div className="bg-rose-500/10 border border-rose-500/25 rounded-lg p-2.5 flex items-center gap-2.5 animate-in fade-in slide-in-from-top-2 duration-200">
+            <AlertTriangle className="w-4 h-4 text-rose-400 shrink-0" />
+            <span className="text-xs text-rose-200 font-medium leading-normal">
+              {error}
+            </span>
+          </div>
+        )}
+
         {/* Recharts graph */}
         <div className="flex-1 min-h-[180px] relative">
           {loading && (
@@ -247,15 +256,6 @@ export default function DigitalTwin({ demoActive }: { demoActive?: boolean }) {
                 <div className="w-8 h-8 border-4 border-indigo-500 border-t-transparent rounded-full animate-spin"></div>
                 <span className="text-xs text-slate-400 font-semibold font-outfit">Simulating scenario...</span>
               </div>
-            </div>
-          )}
-
-          {error && (
-            <div className="absolute top-2 left-2 right-2 bg-rose-500/10 border border-rose-500/20 rounded p-2 z-10 flex items-center gap-2">
-              <AlertTriangle className="w-4 h-4 text-rose-400 shrink-0" />
-              <span className="text-xs text-rose-300 font-semibold leading-normal">
-                {error}
-              </span>
             </div>
           )}
 
