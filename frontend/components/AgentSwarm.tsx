@@ -2,6 +2,7 @@
 
 import React, { useState, useEffect } from 'react';
 import { Play, Terminal, Cpu, Sparkles, CheckCircle2 } from 'lucide-react';
+import { API_BASE_URL } from '../app/config';
 
 interface LogEntry {
   timestamp: string;
@@ -32,7 +33,7 @@ export default function AgentSwarm({ onSwarmComplete, autonomousMode }: { onSwar
 
   const fetchRuns = async () => {
     try {
-      const res = await fetch('http://127.0.0.1:8000/api/agents/runs');
+      const res = await fetch(`${API_BASE_URL}/api/agents/runs`);
       if (!res.ok) throw new Error();
       const data = await res.json();
       setRuns(data);
@@ -68,7 +69,7 @@ export default function AgentSwarm({ onSwarmComplete, autonomousMode }: { onSwar
     if (polling && activeRun && activeRun.id !== 999) {
       intervalId = setInterval(async () => {
         try {
-          const res = await fetch(`http://127.0.0.1:8000/api/agents/runs/${activeRun.id}`);
+          const res = await fetch(`${API_BASE_URL}/api/agents/runs/${activeRun.id}`);
           if (!res.ok) throw new Error();
           const data = await res.json();
           setActiveRun(data);
@@ -135,7 +136,7 @@ export default function AgentSwarm({ onSwarmComplete, autonomousMode }: { onSwar
     e.preventDefault();
     setLoading(true);
     try {
-      const res = await fetch(`http://127.0.0.1:8000/api/rfq?autonomous_mode=${autonomousMode}`, {
+      const res = await fetch(`${API_BASE_URL}/api/rfq?autonomous_mode=${autonomousMode}`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({

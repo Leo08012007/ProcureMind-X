@@ -12,6 +12,7 @@ import AgentSwarm from '../components/AgentSwarm';
 import Copilot from '../components/Copilot';
 import DigitalTwin from '../components/DigitalTwin';
 import IntelligenceGraph from '../components/IntelligenceGraph';
+import { API_BASE_URL } from './config';
 
 export default function Home() {
   const [analytics, setAnalytics] = useState<any>(null);
@@ -55,16 +56,16 @@ export default function Home() {
   const fetchDashboardData = async () => {
     setLoading(true);
     try {
-      const resSpend = await fetch('http://127.0.0.1:8000/api/analytics/spend');
+      const resSpend = await fetch(`${API_BASE_URL}/api/analytics/spend`);
       if (!resSpend.ok) throw new Error();
       const dataSpend = await resSpend.json();
       setAnalytics(dataSpend);
 
-      const resInv = await fetch('http://127.0.0.1:8000/api/inventory');
+      const resInv = await fetch(`${API_BASE_URL}/api/inventory`);
       const dataInv = await resInv.json();
       setInventory(dataInv);
 
-      const resDec = await fetch('http://127.0.0.1:8000/api/analytics/decision');
+      const resDec = await fetch(`${API_BASE_URL}/api/analytics/decision`);
       if (resDec.ok) {
         const dataDec = await resDec.json();
         setDecisionData(dataDec);

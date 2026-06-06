@@ -2,6 +2,7 @@
 
 import React, { useState, useRef } from 'react';
 import { Send, Bot, User, UploadCloud, Sparkles, ShieldCheck, Check } from 'lucide-react';
+import { API_BASE_URL } from '../app/config';
 
 interface Message {
   role: 'user' | 'assistant';
@@ -40,7 +41,7 @@ export default function Copilot() {
     setLoading(true);
 
     try {
-      const res = await fetch('http://127.0.0.1:8000/api/copilot/chat', {
+      const res = await fetch(`${API_BASE_URL}/api/copilot/chat`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ message: textToSend })
@@ -128,7 +129,7 @@ export default function Copilot() {
     formData.append('file', file);
     
     try {
-      const res = await fetch('http://127.0.0.1:8000/api/quotes/upload', {
+      const res = await fetch(`${API_BASE_URL}/api/quotes/upload`, {
         method: 'POST',
         body: formData
       });

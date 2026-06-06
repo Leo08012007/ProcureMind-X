@@ -3,6 +3,7 @@
 import React, { useState, useEffect } from 'react';
 import { Sliders, AlertTriangle, Activity, AlertCircle, DollarSign, Calendar, TrendingUp } from 'lucide-react';
 import { ResponsiveContainer, LineChart, Line, XAxis, YAxis, CartesianGrid, Tooltip, Legend } from 'recharts';
+import { API_BASE_URL } from '../app/config';
 
 export default function DigitalTwin() {
   const [scenario, setScenario] = useState<'delay' | 'price_spike' | 'bankruptcy' | 'demand_spike'>('delay');
@@ -22,7 +23,7 @@ export default function DigitalTwin() {
 
   const runSimulation = async () => {
     try {
-      const res = await fetch('http://127.0.0.1:8000/api/twin/simulate', {
+      const res = await fetch(`${API_BASE_URL}/api/twin/simulate`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({
