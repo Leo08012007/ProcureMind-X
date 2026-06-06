@@ -527,3 +527,8 @@ Academic / Hackathon Prototype
 
 **ProcureMind X – Autonomous Procurement Intelligence Platform** 🚀
 deployment link : https://procuremind-x-production.up.railway.app/
+
+Summary : 
+ProcureMind X – Autonomous Procurement Intelligence Platform
+
+Developed an enterprise-grade AI-powered procurement platform using Next.js, FastAPI, SQLite, and Machine Learning. Implemented vendor risk scoring using Random Forest, supplier performance prediction using LightGBM, price forecasting using ARIMA, and procurement spend optimization using Mixed Integer Linear Programming (MILP). Built a Retrieval-Augmented Generation (RAG) procurement copilot, multi-agent workflow orchestration system, digital twin simulator, and explainable AI dashboard for procurement decision intelligence. Deployed the platform using Docker, GitHub, and Railway.
