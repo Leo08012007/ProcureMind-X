@@ -790,7 +790,7 @@ export default function Home() {
                 <Box className="text-indigo-400 w-5 h-5" />
                 Digital Twin Projections
               </h2>
-              <DigitalTwin />
+              <DigitalTwin demoActive={demoActive} />
             </div>
           </section>
 
